@@ -1,0 +1,9 @@
+function importCSVFromGoogleDrive() {
+
+  var file = DriveApp.getFilesByName("コロナ.csv").next();
+  var csvData = Utilities.parseCsv(file.getBlob().getDataAsString());
+  const activeSpreadSheet = SpreadsheetApp.getActiveSpreadsheet(); 
+  const sheet = activeSpreadSheet.getSheetByName('Sheet1');
+  sheet.getRange(1, 1, csvData.length, csvData[0].length).setValues(csvData);
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+}
