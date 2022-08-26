@@ -1,0 +1,12 @@
+function myFunction() {
+  var fileData = DriveApp.getFilesByName("コロナ.csv");
+  var getData = fileData.next().setTrashed(true);
+  var url = "https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv";
+
+  var dateman = new Date();
+  var namedate = "コロナ.csv";
+  
+  var csv = UrlFetchApp.fetch(url);
+  
+  var csvid = DriveApp.getFolderById("1BMEm0jlysSjDX10pqc1dovMJP8sQIUFf").createFile(namedate, csv,MimeType.CSV).getId();
+}
