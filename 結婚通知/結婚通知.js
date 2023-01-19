@@ -17,7 +17,7 @@ function doPost(lists) {
     const activeSpreadSheet = SpreadsheetApp.getActiveSpreadsheet();//アクティブなシートを収集
     const sheet = activeSpreadSheet.getSheetByName('シート1');//シートを指定
     const nameArray = sheet.getRange("A:B").getValues();
-    a=Utilities.formatDate(nameArray[2][0],"JST","yyyy-MM-dd HH:MM");
+    a=Utilities.formatDate(nameArray[2][0],"JST","yyyy-MM-dd HH:mm");
     if(a<lists[2]){ 
       sheet.getRange(1,1).setValue(lists[0]);
       sheet.getRange(2,1).setValue(lists[1]);
