@@ -60,10 +60,10 @@ function myFunction() {
   var today = Utilities.formatDate(date, 'JST', 'yyyy/MM/dd');//出力の形を決めることができる
   var day = date.getDate()+1;//+1をすることで次の日の日にちを収集することができる。
   date.setDate(day);
-  var tomorrow = Utilities.formatDate(date, 'JST', 'yyyy/M/dd');
+  var tomorrow = Utilities.formatDate(date, 'JST', 'yyyy/MM/dd');
   var day = date.getDate()-2;
   date.setDate(day);
-  var yesterday = Utilities.formatDate(date, 'JST', 'yyyy/M/dd');  
+  var yesterday = Utilities.formatDate(date, 'JST', 'yyyy/MM/dd');  
   //console.log(tomorrow);
   //console.log(yesterday);
   var last=sheet.getLastRow();//スプレッドシートの情報が入っている最後の行数を収集
@@ -76,7 +76,7 @@ function myFunction() {
       if(nameArray[x][1]==''){//空白だったらぬかす
         continue;
       }else{
-        var dates= Utilities.formatDate(nameArray[x][1], 'JST', 'yyyy/M/dd');
+        var dates= Utilities.formatDate(nameArray[x][1], 'JST', 'yyyy/MM/dd');
         if(dates==today){
           //console.log(today);
           //console.log(nameArray[x][2]);
