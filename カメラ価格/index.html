@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .title{
+    text-align: center;
+    font-family:serif;
+    font-size: 40px;
+    padding-bottom: 30px;
+    border-bottom:2px solid #CCC;
+}
+.maker {
+    text-align: center;
+
+}
+img{
+    margin-left: auto;
+    margin-right: auto ;
+}
+.price{
+    text-align: center;
+}
+span{
+    color: deeppink;
+}
+h5{
+    text-align: center;
+}
+.buttons{
+    text-align: center;
+}
+input{
+    width: 30%;
+}
+/* .maker h3{
+    float: right;
+} */
+
+    </style>
+  <script>
+    var avarage=0;
+    var count=0;
+    var num=0;
+    var data;
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  function loadingProcess(){
+    //サーバーからスプレッドシートのデータを取得する
+    google.script.run.withSuccessHandler(dispSpreadsheet).GetSpreadsheet();
+  }
+  window.addEventListener('load', loadingProcess);
+  //取得したデータを表示する
+  function dispSpreadsheet(spreadsheet_data){
+    data=spreadsheet_data;
+    num=getRandomInt(118)+1;
+    var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><div class="maker"><h2>'+spreadsheet_data[num][1]+'</h2></div><img src="'+spreadsheet_data[num][3]+'" width="30%" style="display: block; margin: auto;"><h1 class="price"><span>¥</span>'+spreadsheet_data[num][2]+'</h1><h5>'+spreadsheet_data[num][4]+'</h5>'
+    document.getElementById("dispArea").innerHTML = htmlTable;
+    
+  }
+  function cheap(){
+    count++;
+    avarage+=data[num][2]
+    if(count==10){
+      var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><h1 class="price">'+(avarage/count)+'円です</h1>';
+      if((avarage/count)>50000){
+        htmlTable+="<h3>あなたは金銭感覚狂ってます</h3>";
+      }else{
+        htmlTable+="<h3>あなたは金銭感覚大丈夫です</h3>";
+      }
+      document.getElementById("dispArea").innerHTML = htmlTable;
+    }else{
+      num=getRandomInt(118)+1;
+      var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><div class="maker"><h2>'+data[num][1]+'</h2></div><img src="'+data[num][3]+'" width="30%" style="display: block; margin: auto;"><h1 class="price"><span>¥</span>'+data[num][2]+'</h1><h5>'+data[num][4]+'</h5>'
+      document.getElementById("dispArea").innerHTML = htmlTable;
+    
+    }
+
+  }
+  function expensive(){
+    num=getRandomInt(118)+1;
+    var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><div class="maker"><h2>'+data[num][1]+'</h2></div><img src="'+data[num][3]+'" width="30%" style="display: block; margin: auto;"><h1 class="price"><span>¥</span>'+data[num][2]+'</h1><h5>'+data[num][4]+'</h5>'
+    document.getElementById("dispArea").innerHTML = htmlTable;
+  }
+  function free(){
+    count++;
+    avarage=avarage+data[num][2]+50000;
+    if(count==10){
+      var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><h1 class="price">'+(avarage/count)+'円です</h1>';
+      if((avarage/count)>50000){
+        htmlTable+="<h3>あなたは金銭感覚狂ってます</h3>";
+      }else{
+        htmlTable+="<h3>あなたは金銭感覚大丈夫です</h3>";
+      }
+      document.getElementById("dispArea").innerHTML = htmlTable;
+    }else{
+      num=getRandomInt(118)+1;
+      var htmlTable='<h1 class="title">あなたは金銭感覚大丈夫？</h1><div class="maker"><h2>'+data[num][1]+'</h2></div><img src="'+data[num][3]+'" width="30%" style="display: block; margin: auto;"><h1 class="price"><span>¥</span>'+data[num][2]+'</h1><h5>'+data[num][4]+'</h5>'
+      document.getElementById("dispArea").innerHTML = htmlTable;
+    
+    }
+  }
+  </script>
+  
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <div id='dispArea'>
+    </div>
+    <div class="buttons">
+        <input type="button" value="安い" onclick="cheap();"/>
+        <input type="button" value="無料" onclick="free();"/>
+        <input type="button" value="高い" onclick="expensive();"/>
+    </div>
+  </body>
+</html>
