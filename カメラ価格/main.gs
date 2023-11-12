@@ -1,5 +1,5 @@
 //読み込みでも書き込みでも利用するので、変数に入れてしまう
-var spreadsheetId = '1I3IR_lFsgJnIyC9KUBJrCn9ND2fyGrh6-tFb6ToOt5I';
+var spreadsheetId = 'シートID';
 
 //実行時にwebサービスを実行させる
 function doGet(e) {
