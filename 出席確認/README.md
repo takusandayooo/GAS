@@ -1,6 +1,7 @@
 # 出席管理
 
 ## 仕組み
+GASを用いることでGoogleカレンダー上に表示することができます。
 Google Mapのタイムラインの機能を用いて、行った場所を取得し学校に出席しているのかを判定を行っている。
 ## 使い方
 1. Google Mapのタイムラインの情報の取得  
@@ -12,7 +13,7 @@ Google Mapのタイムラインの機能を用いて、行った場所を取得�
 4. カレンダーIDを取得し、[`calendarId`](https://github.com/takusandayooo/GAS/blob/167a562a1239a738e764cbb2ccaa2a89be887a63/%E5%87%BA%E5%B8%AD%E7%A2%BA%E8%AA%8D/main.gs#L1)に代入  
    カレンダーIDの取得はこちらのURLを参考にしてください[参考URL](https://blog-and-destroy.com/41932)
 5. 緯度軽度の条件文の定義  
-   国土地理院などの地図アプリを用いで学校の緯度と軽度を取得し、２点を取得して[`latitude, longitude`](https://github.com/takusandayooo/GAS/blob/167a562a1239a738e764cbb2ccaa2a89be887a63/%E5%87%BA%E5%B8%AD%E7%A2%BA%E8%AA%8D/main.gs#L20)の条件文に代入してください。
+   国土地理院などの地図アプリを用いで学校の緯度と経度を取得し、２点を取得して[`latitude, longitude`](https://github.com/takusandayooo/GAS/blob/167a562a1239a738e764cbb2ccaa2a89be887a63/%E5%87%BA%E5%B8%AD%E7%A2%BA%E8%AA%8D/main.gs#L20)の条件文に代入してください。
    例:東京駅内にいる場合
    ![スクリーンショット 2024-01-20 19 54 39](https://github.com/takusandayooo/GAS/assets/54734834/17b7747d-e93d-49f7-9d6f-3b420c502dcf)
    ![スクリーンショット 2024-01-20 19 54 25](https://github.com/takusandayooo/GAS/assets/54734834/8de60644-2baa-45ec-9ca5-c5da55fcb761)
